@@ -49,65 +49,99 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       body: SingleChildScrollView(
-        
         child: Column(
           children: [
             const SizedBox(height: 20),
-
-            
-            SizedBox(
-              height: 85,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: 20,
-                separatorBuilder: (context, index) => const SizedBox(width: 10),
-                itemBuilder: (context, index) {
-                  return Container(
-                    width: 200,
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.purple),
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.red,
-                    ),
-                    child: Center(
-                    
-                      child:Row(
-                        
-                        children: [
-                          Icon(Icons.import_contacts),
-                          
-                          Column(
-                            children: [
-                              Text('data'),
-                              Spacer(),
-                              Text('data'),
-                                            
-                               ],
-                                                        
-                          ),
-                          Icon(Icons.import_contacts),
-                          
-                        ],
-                        
-                      )
-                    ),
-                  );
-                },
-              ),
+            Row(
+              children: [
+                ClipOval(
+                  child: Image.asset(
+                    "assets/image/download.jpg",
+                    height: 100,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('data'),
+                      Text('data'),
+                      Text('data'),
+                    ],
+                  ),
+                ),
+                Image.asset(
+                  "assets/image/download.jpg",
+                  height: 100,
+                ),
+              ],
             ),
-
             const SizedBox(height: 20),
-
-           
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 10,
-              itemBuilder: (context, index) => ListTile(
-                title: Text('List item ${index + 1}'),
-                leading: const Icon(Icons.list),
+            Container(
+              height: 300,
+              child: GridView.count(
+                crossAxisCount: 3,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                children: [
+                  Container(
+                    color: Colors.red,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/image/download.jpg",
+                          
+                          fit: BoxFit.cover,
+                        ),
+                        const Text('data'),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color: Colors.red,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/image/download.jpg",
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                        const Text('data'),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color: Colors.red,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/image/download.jpg",
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                        const Text('data'),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color: Colors.red,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/image/download.jpg",
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                        const Text('data'),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -131,4 +165,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
 

@@ -11,27 +11,37 @@ class SearchPage extends StatelessWidget {
         title: Text('search'),
         backgroundColor: Colors.amberAccent,
       ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ClickAbleContainer(),
-            SizedBox(width: 20),
-            Container(
-              height: 50,
-              width: 50,
-              color: Colors.red,
-              child: Center(child: Text('$_variable1')),
-            ),
-            SizedBox(width: 20),
-            SizedBox(
-              width: 200,
-            ),
-          ],
+      body: GridView.count(crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10,
+      children: [
+        Container(
+          width: 60,
+          height: 60,
+          color: Colors.red,
+          child: Text('data'),
         ),
-      ),
+         Container(
+          width: 60,
+          height: 60,
+          color: Colors.red,
+          child: Text('data'),
+        ),
+         Container(
+          width: 60,
+          height: 60,
+          color: Colors.red,
+          child: Text('data'),
+        ),
+         Container(
+          width: 60,
+          height: 60,
+          color: Colors.red,
+          child: Text('data'),
+        ),
+      ],
+      )
     );
   }
+  
 }
 
 
