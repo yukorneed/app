@@ -3,168 +3,77 @@ import 'package:app/pages/search.dart';
 import 'package:app/pages/settings.dart';
 import 'package:flutter/material.dart';
 
+
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Bottom Navigation Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: MainPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
+class MainPage extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _currentPage = 0;
+class _MainPageState extends State<MainPage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    HomePage(),
+    SearchPage(),
+    SettingsPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  String _getTitle(int index) {
+    switch (index) {
+      case 0:
+        return 'Home Page';
+      case 1:
+        return 'Search Page';
+      case 2:
+        return 'Settings Page';
+      default:
+        return '';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final pages = [
-      HomePage(),
-      SearchPage(),
-      SettingsPage(),
-    ];
-
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(_getTitle(_selectedIndex)),
       ),
-
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                ClipOval(
-                  child: Image.asset(
-                    "assets/image/download.jpg",
-                    height: 100,
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('data'),
-                      Text('data'),
-                      Text('data'),
-                    ],
-                  ),
-                ),
-                Image.asset(
-                  "assets/image/download.jpg",
-                  height: 100,
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Container(
-              height: 300,
-              child: GridView.count(
-                crossAxisCount: 3,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                children: [
-                  Container(
-                    color: Colors.red,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/image/download.jpg",
-                          
-                          fit: BoxFit.cover,
-                        ),
-                        const Text('data'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    color: Colors.red,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/image/download.jpg",
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                        const Text('data'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    color: Colors.red,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/image/download.jpg",
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                        const Text('data'),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    color: Colors.red,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/image/download.jpg",
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                        const Text('data'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.green,
-        unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.white,
-        showUnselectedLabels: false,
-        currentIndex: _currentPage,
-        onTap: (index) => setState(() => _currentPage = index),
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'search'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'settings'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
         ],
       ),
     );
   }
 }
+
 
 
 
