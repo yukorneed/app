@@ -1,6 +1,7 @@
 import 'package:app/pages/home.dart';
 import 'package:app/pages/search.dart';
 import 'package:app/pages/settings.dart';
+import 'package:app/pages/category.dart';
 import 'package:flutter/material.dart';
 
 
@@ -31,6 +32,7 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     SearchPage(),
     SettingsPage(),
+    CategoryPage()
   ];
 
   void _onItemTapped(int index) {
@@ -47,6 +49,8 @@ class _MainPageState extends State<MainPage> {
         return 'Search Page';
       case 2:
         return 'Settings Page';
+      case 3:
+        return 'Category Page';
       default:
         return '';
     }
@@ -68,6 +72,7 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+          BottomNavigationBarItem(icon: Icon(Icons.category), label: 'Category'),
         ],
       ),
     );
