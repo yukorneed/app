@@ -25,7 +25,7 @@ class _FootballPageState extends State<FootballPage> {
                   height: 150,
                   child: Image.asset(
                     "assets/images/football_main.jpg",
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain, // Бүтэн зураг харуулах
                   ),
                 ),
                 SizedBox(height: 10),
@@ -46,69 +46,10 @@ class _FootballPageState extends State<FootballPage> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                Container(
-                  width: imageSize,
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/images/football1.jpg",
-                        width: imageSize,
-                        height: imageSize,
-                        
-                      ),
-                      SizedBox(height: 5),
-                      Text("Cristiano Ronaldo", textAlign: TextAlign.center),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 10),
-                Container(
-                  width: imageSize,
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/images/football2.jpg",
-                        width: imageSize,
-                        height: imageSize,
-                        
-                      ),
-                      SizedBox(height: 5),
-                      Text("Lionel Messi", textAlign: TextAlign.center),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 10),
-                Container(
-                  width: imageSize,
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/images/football3.jpg",
-                        width: imageSize,
-                        height: imageSize,
-                        
-                      ),
-                      SizedBox(height: 5),
-                      Text("Player 3", textAlign: TextAlign.center),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 10),
-                Container(
-                  width: imageSize,
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/images/football4.jpg",
-                        width: imageSize,
-                        height: imageSize,
-                        
-                      ),
-                      SizedBox(height: 5),
-                      Text("Player 4", textAlign: TextAlign.center),
-                    ],
-                  ),
-                ),
+                buildPlayerCard("assets/images/football1.jpg", "Cristiano Ronaldo", imageSize),
+                buildPlayerCard("assets/images/football2.jpg", "Lionel Messi", imageSize),
+                buildPlayerCard("assets/images/football3.jpg", "Player 3", imageSize),
+                buildPlayerCard("assets/images/football4.jpg", "Player 4", imageSize),
               ],
             ),
           ),
@@ -116,4 +57,26 @@ class _FootballPageState extends State<FootballPage> {
       ),
     );
   }
+
+  Widget buildPlayerCard(String imagePath, String name, double size) {
+    return Container(
+      width: size,
+      margin: EdgeInsets.only(right: 10),
+      child: Column(
+        children: [
+          Container(
+            width: size,
+            height: size,
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.contain, // Бүтэн зураг
+            ),
+          ),
+          SizedBox(height: 5),
+          Text(name, textAlign: TextAlign.center),
+        ],
+      ),
+    );
+  }
 }
+
